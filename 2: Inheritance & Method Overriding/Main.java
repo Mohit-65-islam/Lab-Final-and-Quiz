@@ -1,0 +1,58 @@
+import java.util.Scanner;
+
+class Employee {
+    public double calculateSalary() {
+        return 0.0;
+    }
+}
+
+class FullTimeEmployee extends Employee {
+    private double monthlySalary;
+
+    public FullTimeEmployee(double monthlySalary) {
+        this.monthlySalary = monthlySalary;
+    }
+
+    @Override
+    public double calculateSalary() {
+        return monthlySalary;
+    }
+}
+
+class PartTimeEmployee extends Employee {
+    private int hoursWorked;
+    private double hourlyRate;
+
+    public PartTimeEmployee(int hoursWorked, double hourlyRate) {
+        this.hoursWorked = hoursWorked;
+        this.hourlyRate = hourlyRate;
+    }
+
+    @Override
+    public double calculateSalary() {
+        return hoursWorked * hourlyRate;
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Enter Full Time Employee Monthly Salary: ");
+        double monthlySalary = sc.nextDouble();
+
+        Employee emp1 = new FullTimeEmployee(monthlySalary);
+        System.out.println("Full Time Employee Salary: " + emp1.calculateSalary());
+
+        System.out.print("\nEnter Part Time Employee Hours Worked: ");
+        int hours = sc.nextInt();
+
+        System.out.print("Enter Hourly Rate: ");
+        double rate = sc.nextDouble();
+
+        Employee emp2 = new PartTimeEmployee(hours, rate);
+        System.out.println("Part Time Employee Salary: " + emp2.calculateSalary());
+
+        sc.close();
+    }
+}
