@@ -1,0 +1,51 @@
+import java.util.Scanner;
+
+class Student {
+    private int id;
+    private String name;
+    private double cgpa;
+
+    public Student(int id, String name, double cgpa) {
+        this.id = id;
+        this.name = name;
+        if (cgpa >= 0.0 && cgpa <= 4.0) {
+            this.cgpa = cgpa;
+        } else {
+            this.cgpa = 0.0;
+        }
+    }
+
+    public double getCgpa() {
+        return cgpa;
+    }
+
+    public void setCgpa(double cgpa) {
+        if (cgpa >= 0.0 && cgpa <= 4.0) {
+            this.cgpa = cgpa;
+        }
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.println("Enter Student ID:");
+        int id = sc.nextInt();
+
+        System.out.println("Enter Student Name:");
+        String name = sc.next();
+
+        System.out.println("Enter Initial CGPA (0.0 - 4.0):");
+        double cgpa = sc.nextDouble();
+
+        Student s = new Student(id, name, cgpa);
+        System.out.println("Current CGPA: " + s.getCgpa());
+
+        System.out.println("Enter New CGPA to update:");
+        double newCgpa = sc.nextDouble();
+
+        s.setCgpa(newCgpa);
+        System.out.println("Updated CGPA: " + s.getCgpa());
+    }
+}
